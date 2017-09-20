@@ -12,7 +12,7 @@ import kareltherobot.*;
 public class DoubleBot extends Robot
 {
     // instance variables - replace the example below with your own
-    public int beepers;
+    public int numBeepers = 0;
 
     /**
      * Constructor for objects of class Template
@@ -23,7 +23,24 @@ public class DoubleBot extends Robot
 
     public void doubleBeepers()
     {
-        // put your code here
-        
+        move();
+        countBeepers();
+        move();
+        putDouble();
+    }
+    public void countBeepers(){
+        while(nextToABeeper()){
+            pickBeeper();
+            numBeepers++;
+        }
+        for(int i=0;i<numBeepers;i++){
+            putBeeper();
+        }
+    }
+    public void putDouble(){
+        for(int i=0;i<(2*numBeepers);i++){
+            putBeeper();
+        }
+        move();
     }
 }
